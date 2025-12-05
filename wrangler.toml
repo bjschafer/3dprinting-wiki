@@ -1,0 +1,5 @@
+name = "3d-printing-wiki"
+compatibility_date = "2025-12-04"
+
+[assets]
+directory = "./dist"
