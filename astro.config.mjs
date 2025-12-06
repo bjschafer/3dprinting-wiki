@@ -21,15 +21,23 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "guides/example" },
-          ],
+          label: "Build",
+          autogenerate: { directory: "build" },
         },
         {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
+          label: "Tuning and Calibration",
+          autogenerate: { directory: "tuning" },
+        },
+        {
+          label: "Troubleshooting",
+          autogenerate: { directory: "troubleshooting" },
+        },
+        {
+          label: "CAD and Design",
+          autogenerate: { directory: "design" },
+        },
+        {
+          slug: "useful-links",
         },
         {
           slug: "contributing",

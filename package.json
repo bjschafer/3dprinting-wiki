@@ -8,7 +8,7 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "format": "prettier --write **/*.ts **/*.mjs"
+        "format": "prettier --write **/*.ts **/*.mjs **/*.mdx"
     },
     "dependencies": {
         "@astrojs/starlight": "^0.37.0",
