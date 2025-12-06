@@ -9,6 +9,9 @@ export default defineConfig({
     integrations: [
         starlight({
             title: '3D Printing Wiki',
+            editLink: {
+                baseUrl: 'https://github.com/bjschafer/3dprinting-wiki/edit/main/',
+            },
             social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/bjschafer/3dprinting-wiki' }],
             sidebar: [
                 {
