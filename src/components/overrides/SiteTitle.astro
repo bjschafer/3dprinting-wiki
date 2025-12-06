@@ -1,0 +1,52 @@
+---
+/**
+ * Override for Starlight's SiteTitle component.
+ * Adds a "Tags" link next to the site title in the header.
+ */
+import Default from "@astrojs/starlight/components/SiteTitle.astro";
+import type { Props } from "@astrojs/starlight/props";
+---
+
+<div class="site-title-wrapper">
+    <Default {...Astro.props}><slot /></Default>
+    <nav class="header-nav">
+        <a href="/tags/" class="header-nav-link">Tags</a>
+    </nav>
+</div>
+
+<style>
+    .site-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .header-nav {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .header-nav-link {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--sl-color-gray-2);
+        text-decoration: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        transition:
+            color 0.2s ease,
+            background-color 0.2s ease;
+    }
+
+    .header-nav-link:hover {
+        color: var(--sl-color-white);
+        background-color: var(--sl-color-gray-6);
+    }
+
+    /* Hide on mobile - too crowded */
+    @media (max-width: 50rem) {
+        .header-nav {
+            display: none;
+        }
+    }
+</style>

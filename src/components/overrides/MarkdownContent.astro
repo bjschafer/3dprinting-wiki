@@ -1,0 +1,19 @@
+---
+/**
+ * Override for Starlight's MarkdownContent component.
+ * Automatically displays stub banners and tags based on frontmatter.
+ */
+import Default from "@astrojs/starlight/components/MarkdownContent.astro";
+import type { StarlightRouteData } from "@astrojs/starlight/route-data";
+import StubBanner from "../StubBanner.astro";
+import Tags from "../Tags.astro";
+
+const route = Astro.locals.starlightRoute as StarlightRouteData | undefined;
+const entry = route?.entry;
+const stub = entry?.data?.stub as boolean | undefined;
+const tags = entry?.data?.tags as string[] | undefined;
+---
+
+{stub && <StubBanner />}
+{tags && tags.length > 0 && <Tags tags={tags} />}
+<Default {...Astro.props}><slot /></Default>
