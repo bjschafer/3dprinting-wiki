@@ -1,0 +1,99 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { getAllTags } from "../../utils/tags";
+
+const tags = await getAllTags();
+const totalDocs = tags.reduce((sum, tag) => sum + tag.count, 0);
+---
+
+<StarlightPage
+    frontmatter={{
+        title: "Tags",
+        description: "Browse all tags used across the wiki",
+        template: "splash",
+        tableOfContents: false,
+    }}
+>
+    <p class="tag-intro">
+        Browse articles by tag. Tags help categorize content by printer family,
+        topic, or other relevant attributes.
+    </p>
+
+    {
+        tags.length === 0 ? (
+            <p class="no-tags">
+                No tags found. Add tags to your documentation pages to see them
+                here.
+            </p>
+        ) : (
+            <div class="tag-cloud">
+                {tags.map((tag) => (
+                    <a href={`/tags/${tag.slug}/`} class="tag-item">
+                        <span class="tag-name">{tag.name}</span>
+                        <span class="tag-count">{tag.count}</span>
+                    </a>
+                ))}
+            </div>
+        )
+    }
+</StarlightPage>
+
+<style>
+    .tag-intro {
+        font-size: 1.1rem;
+        color: var(--sl-color-gray-2);
+        margin-bottom: 2rem;
+    }
+
+    .no-tags {
+        color: var(--sl-color-gray-3);
+        font-style: italic;
+    }
+
+    .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .tag-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--sl-color-bg-nav);
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 2rem;
+        text-decoration: none;
+        color: var(--sl-color-text);
+        transition: all 0.2s ease;
+    }
+
+    .tag-item:hover {
+        background: var(--sl-color-accent);
+        border-color: var(--sl-color-accent);
+        color: var(--sl-color-black);
+    }
+
+    .tag-name {
+        font-weight: 500;
+    }
+
+    .tag-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.5rem;
+        height: 1.5rem;
+        padding: 0 0.4rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        background: var(--sl-color-gray-6);
+        border-radius: 1rem;
+    }
+
+    .tag-item:hover .tag-count {
+        background: var(--sl-color-black);
+        color: var(--sl-color-accent);
+    }
+</style>

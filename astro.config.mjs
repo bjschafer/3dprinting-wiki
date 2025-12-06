@@ -1,7 +1,7 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import catppuccin from "@catppuccin/starlight";
+import { defineConfig } from 'astro/config';
 import starlightLinksValidator from 'starlight-links-validator';
 
 // https://astro.build/config
@@ -26,6 +26,12 @@ export default defineConfig({
                     slug: 'contributing',
                 },
             ],
+            components: {
+                // Override MarkdownContent to show tags and stub banners automatically
+                MarkdownContent: './src/components/overrides/MarkdownContent.astro',
+                // Override SiteTitle to add Tags link in header
+                SiteTitle: './src/components/overrides/SiteTitle.astro',
+            },
             plugins: [
                 catppuccin(),
                 starlightLinksValidator(),

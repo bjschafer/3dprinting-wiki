@@ -1,0 +1,222 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { getAllTags, getDocsByTag, tagToSlug } from "../../utils/tags";
+
+export async function getStaticPaths() {
+    const tags = await getAllTags();
+    return tags.map((tag) => ({
+        params: { tag: tag.slug },
+        props: { tagName: tag.name, tagCount: tag.count },
+    }));
+}
+
+const { tag } = Astro.params;
+const { tagName, tagCount } = Astro.props;
+
+const docs = await getDocsByTag(tagName);
+const allTags = await getAllTags();
+---
+
+<StarlightPage
+    frontmatter={{
+        title: `Tag: ${tagName}`,
+        description: `All articles tagged with "${tagName}"`,
+        tableOfContents: false,
+    }}
+>
+    <div class="tag-header">
+        <a href="/tags/" class="back-link">← All tags</a>
+        <p class="tag-count">
+            {tagCount}
+            {tagCount === 1 ? "article" : "articles"}
+        </p>
+    </div>
+
+    <div class="docs-list">
+        {
+            docs.map((doc) => (
+                <article class="doc-card">
+                    <a href={`/${doc.slug}/`} class="doc-link">
+                        <h2 class="doc-title">{doc.title}</h2>
+                        {doc.description && (
+                            <p class="doc-description">{doc.description}</p>
+                        )}
+                    </a>
+                    <div class="doc-tags">
+                        {doc.tags.map((t) => (
+                            <a
+                                href={`/tags/${tagToSlug(t)}/`}
+                                class:list={[
+                                    "doc-tag",
+                                    {
+                                        active:
+                                            t.toLowerCase() ===
+                                            tagName.toLowerCase(),
+                                    },
+                                ]}
+                            >
+                                {t}
+                            </a>
+                        ))}
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+
+    <aside class="related-tags">
+        <h3>Other tags</h3>
+        <div class="related-tags-list">
+            {
+                allTags
+                    .filter((t) => t.slug !== tag)
+                    .slice(0, 10)
+                    .map((t) => (
+                        <a href={`/tags/${t.slug}/`} class="related-tag">
+                            {t.name} <span class="count">({t.count})</span>
+                        </a>
+                    ))
+            }
+            {
+                allTags.length > 11 && (
+                    <a href="/tags/" class="related-tag more">
+                        View all tags →
+                    </a>
+                )
+            }
+        </div>
+    </aside>
+</StarlightPage>
+
+<style>
+    .tag-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--sl-color-gray-5);
+    }
+
+    .back-link {
+        color: var(--sl-color-accent);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+    .tag-count {
+        color: var(--sl-color-gray-2);
+        margin: 0;
+    }
+
+    .docs-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .doc-card {
+        padding: 1.25rem;
+        background: var(--sl-color-bg-nav);
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 0.5rem;
+        transition: border-color 0.2s ease;
+    }
+
+    .doc-card:hover {
+        border-color: var(--sl-color-accent);
+    }
+
+    .doc-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        margin-bottom: 0.75rem;
+    }
+
+    .doc-title {
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem 0;
+        color: var(--sl-color-white);
+    }
+
+    .doc-description {
+        color: var(--sl-color-gray-2);
+        margin: 0;
+        font-size: 0.95rem;
+    }
+
+    .doc-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .doc-tag {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.6rem;
+        background: var(--sl-color-gray-6);
+        border-radius: 1rem;
+        text-decoration: none;
+        color: var(--sl-color-gray-2);
+        transition: all 0.2s ease;
+    }
+
+    .doc-tag:hover,
+    .doc-tag.active {
+        background: var(--sl-color-accent);
+        color: var(--sl-color-black);
+    }
+
+    .related-tags {
+        padding: 1.5rem;
+        background: var(--sl-color-bg-nav);
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 0.5rem;
+    }
+
+    .related-tags h3 {
+        margin: 0 0 1rem 0;
+        font-size: 1rem;
+        color: var(--sl-color-gray-2);
+    }
+
+    .related-tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .related-tag {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.7rem;
+        background: var(--sl-color-gray-6);
+        border-radius: 1rem;
+        text-decoration: none;
+        color: var(--sl-color-text);
+        transition: all 0.2s ease;
+    }
+
+    .related-tag:hover {
+        background: var(--sl-color-accent);
+        color: var(--sl-color-black);
+    }
+
+    .related-tag .count {
+        color: var(--sl-color-gray-3);
+    }
+
+    .related-tag:hover .count {
+        color: var(--sl-color-black);
+    }
+
+    .related-tag.more {
+        background: transparent;
+        color: var(--sl-color-accent);
+    }
+</style>
