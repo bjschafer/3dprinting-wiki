@@ -7,6 +7,9 @@ import starlightStubBadge from "./src/plugins/starlight-stub-badge";
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    layout: "constrained",
+  },
   integrations: [
     starlight({
       title: "3D Printing Wiki",
