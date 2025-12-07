@@ -3,6 +3,7 @@ import starlight from "@astrojs/starlight";
 import catppuccin from "@catppuccin/starlight";
 import { defineConfig } from "astro/config";
 import starlightLinksValidator from "starlight-links-validator";
+import starlightStubBadge from "./src/plugins/starlight-stub-badge";
 
 // https://astro.build/config
 export default defineConfig({
@@ -49,7 +50,7 @@ export default defineConfig({
         // Override SiteTitle to add Tags link in header
         SiteTitle: "./src/components/overrides/SiteTitle.astro",
       },
-      plugins: [catppuccin(), starlightLinksValidator()],
+      plugins: [starlightStubBadge(), catppuccin(), starlightLinksValidator()],
     }),
   ],
 });
