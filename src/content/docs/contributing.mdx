@@ -3,6 +3,8 @@ title: Contributing
 description: How to contribute
 ---
 
+import { FileTree } from '@astrojs/starlight/components';
+
 Welcome, and thank you for your interest in helping us be _the_ home for 3D printing documentation.
 
 ## Submitting a Pull Request (PR)
@@ -13,6 +15,74 @@ page to get started!
 By submitting a PR, you agree that all content on this wiki is licensed under GPLv3.
 This means that anyone is free to use the content on this wiki, provided they make
 any modifications available under the same license. We want everyone to be able to benefit.
+
+## Organization
+
+We have several top-level folders; content should go in one of them. If you think we need
+another top-level folder, feel free to propose it!
+
+### Images
+
+Images should be PNG, JPEGs, or WEBP files. HEIC files are not currently supported.
+
+Images for a page should live in a folder next to and named the same as the page. For example:
+
+<FileTree>
+
+- calibration
+    - first-layer.mdx
+    - first-layer
+        - too-high.png
+        - too-low.png
+
+</FileTree>
+
+Images can then be referenced in the page like:
+
+```markdown
+![Add descriptive alt text here](./first-layer/too-high.png)
+```
+
+Astro will automatically optimize the image for the device requesting the page.
+
+### Tags
+
+We support adding tags to pages via [frontmatter](https://starlight.astro.build/guides/authoring-content/#frontmatter).
+This looks like so:
+
+```mdx
+---
+title: My awesome page
+description: This page is absolutely the coolest.
+tags:
+    - testing
+    - foo
+---
+```
+
+While we don't currently have a fixed list of tags, you might consider one or more of the following tags:
+
+- `FDM` for topics specific to FDM/FFF (additive) printing.
+- `Resin` for topics specific to resin/SLA printing.
+
+### Stub articles
+
+Got a great idea for an article, but don't feel confident writing the entire thing? Mark the article as
+a stub in the frontmatter:
+
+```mdx
+---
+title: My awesome page
+description: This page is absolutely the coolest.
+tags:
+    - testing
+    - foo
+stub: true
+---
+```
+
+This will cause a stub banner to appear on the top of the page, and the article will have a stub badge
+in the navigation pane as well.
 
 ## AI Policy
 
