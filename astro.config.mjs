@@ -10,6 +10,7 @@ export default defineConfig({
   image: {
     layout: "constrained",
   },
+  site: "https://3d-printing.wiki",
   integrations: [
     starlight({
       title: "3D Printing Wiki",
