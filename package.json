@@ -8,7 +8,9 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "format": "prettier --write **/*.ts **/*.mjs **/*.mdx"
+        "format": "prettier --write **/*.{ts,mjs,mdx}",
+        "check": "astro check",
+        "pre-commit": "bun run format && bun run check"
     },
     "dependencies": {
         "@astrojs/starlight": "^0.37.0",
@@ -18,6 +20,8 @@
         "starlight-links-validator": "^0.19.2"
     },
     "devDependencies": {
-        "prettier": "^3.7.4"
+        "@astrojs/check": "^0.9.6",
+        "prettier": "^3.7.4",
+        "typescript": "^5.9.3"
     }
 }
