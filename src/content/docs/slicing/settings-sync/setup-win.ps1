@@ -13,7 +13,7 @@ if ($SLICER -eq 'OrcaSlicer') {
 
 # ensure SRC is empty; this is a fresh setup
 if ($(Get-ChildItem $SRC).Length -gt 0) {
-    Write-Error "${SRC} contains files -- check the path or run the sync script" 2>&1 -ErrorAction Stop
+    Write-Error "${SRC} contains files -- check the path or run the sync script" -ErrorAction Stop
 }
 
 New-Item -ItemType Directory -Force -Path $SRC
