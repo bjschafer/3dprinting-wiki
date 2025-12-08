@@ -2,12 +2,12 @@
 title: Syncing settings
 description: How to sync settings between slicers
 tags:
-    - OrcaSlicer
+  - OrcaSlicer
 ---
 
-import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
-import setupNix from './settings-sync/setup-nix.sh?raw'
-import setupWin from './settings-sync/setup-win.ps1?raw'
+import { Code, Tabs, TabItem } from "@astrojs/starlight/components";
+import setupNix from "./settings-sync/setup-nix.sh?raw";
+import setupWin from "./settings-sync/setup-win.ps1?raw";
 
 Do you have multiple computers you'd like to run your slicer on but don't want to manually keep your settings
 in sync? This is for you!
@@ -29,12 +29,12 @@ Then, you'll need to run the following. Choose PowerShell if you're on Windows, 
 macOS or Linux:
 
 <Tabs syncKey="shell">
-    <TabItem label="Bash" icon="seti:shell">
-        <Code code={setupNix} lang="bash" title="setup-nix.sh" />
-    </TabItem>
-    <TabItem label="PowerShell" icon="seti:powershell">
-        <Code code={setupWin} lang="powershell" title="setup-nix.sh" />
-    </TabItem>
+  <TabItem label="Bash" icon="seti:shell">
+    <Code code={setupNix} lang="bash" title="setup-nix.sh" />
+  </TabItem>
+  <TabItem label="PowerShell" icon="seti:powershell">
+    <Code code={setupWin} lang="powershell" title="setup-nix.sh" />
+  </TabItem>
 </Tabs>
 
 ## Setting up additional/new machines
@@ -42,10 +42,10 @@ macOS or Linux:
 Once you've set up your source of truth, you can set up additional machines like so:
 
 <Tabs syncKey="shell">
-    <TabItem label="Bash" icon="seti:shell">
-        Under construction -- check back in a day or two!
-    </TabItem>
-    <TabItem label="PowerShell" icon="seti:powershell">
-        Under construction -- check back in a day or two!
-    </TabItem>
+  <TabItem label="Bash" icon="seti:shell">
+    Under construction -- check back in a day or two!
+  </TabItem>
+  <TabItem label="PowerShell" icon="seti:powershell">
+    Under construction -- check back in a day or two!
+  </TabItem>
 </Tabs>
