@@ -21,6 +21,7 @@
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.6",
+        "@mdx-js/language-server": "^0.6.3",
         "prettier": "^3.7.4",
         "typescript": "^5.9.3"
     }
