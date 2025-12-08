@@ -38,6 +38,10 @@ export default defineConfig({
           autogenerate: { directory: "troubleshooting" },
         },
         {
+          label: "Slicing",
+          autogenerate: { directory: "slicing" },
+        },
+        {
           label: "CAD and Design",
           autogenerate: { directory: "design" },
         },
