@@ -8,7 +8,7 @@ $DEST = "$env:APPDATA\$SLICER"
 
 $DEST_SUBPATH = ""
 if ($SLICER -eq 'OrcaSlicer') {
-    $DEST_SUBPATH = 'user/default'
+    $DEST_SUBPATH = 'user\default'
 }
 
 # ensure SRC is empty; this is a fresh setup
@@ -25,10 +25,10 @@ Foreach ($d in Get-ChildItem -Directory)
     Write-Host "backing up $d"
     Copy-Item -Path $d -Destination "$(d).orig" -Recurse
 
-    Move-Item $d "$SRC/$(d).Name"
+    Move-Item $d "$SRC\$(d).Name"
 
     Write-Host "linking $d"
-    New-Item -Target "$SRC/$(d).Name" -Path $d -ItemType SymbolicLink
+    New-Item -Target "$SRC\$(d).Name" -Path $d -ItemType SymbolicLink
 }
 Pop-Location
 
