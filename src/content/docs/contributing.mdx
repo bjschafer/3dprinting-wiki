@@ -49,6 +49,34 @@ Images can then be referenced in the page like:
 
 Astro will automatically optimize the image for the device requesting the page.
 
+### Code/Scripts
+
+If you need to include more than a few lines of code in a page, you can put your code in its own file. These
+files should live in a folder next to and named the same as the page.  For example:
+
+<FileTree>
+
+- slicing
+  - settings-sync.mdx
+  - settings-sync
+    - setup-nix.sh
+    - setup-win.ps1
+
+</FileTree>
+
+These files can then be referenced in the page like:
+
+```mdx
+import setupNix from "./settings-sync/setup-nix.sh?raw";
+import setupWin from "./settings-sync/setup-win.ps1?raw";
+
+<Code code={setupNix} lang="bash" title="setup-nix.sh" />
+
+<Code code={setupWin} lang="powershell" title="setup-nix.sh" />
+```
+
+This way, you're able to run syntax checking, formatters, etc. on the code and not clutter up the source of the page.
+
 ### Tags
 
 We support adding tags to pages via [frontmatter](https://starlight.astro.build/guides/authoring-content/#frontmatter).
