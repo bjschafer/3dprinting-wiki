@@ -6,8 +6,10 @@ tags:
 ---
 
 import { Code, Tabs, TabItem } from "@astrojs/starlight/components";
-import setupNix from "./settings-sync/setup-nix.sh?raw";
-import setupWin from "./settings-sync/setup-win.ps1?raw";
+import setupNix from "./settings-sync/setup.sh?raw";
+import setupWin from "./settings-sync/setup.ps1?raw";
+import newMachineNix from "./settings-sync/new-machine.sh?raw";
+import newMachineWin from "./settings-sync/new-machine.ps1?raw";
 
 Do you have multiple computers you'd like to run your slicer on but don't want to manually keep your settings
 in sync? This is for you!
@@ -15,7 +17,20 @@ in sync? This is for you!
 These direction are written for OrcaSlicer as that's what I regularly use, but should be adaptible between
 other slicers.
 
-## Initial setup
+## Cloud sync
+
+Some slicers (e.g. Bambu and OrcaSlicer) include a network / cloud plugin you can enable to sync your settings between computers.
+This is often the most straightforward way.
+
+## External sync
+
+If you can easily do so, you can make a shortcut to pass the correct option for your slicer. For OrcaSlicer, this would look like
+`/path/to/orcaslicer --datadir PATH_TO_YOUR_SYNC`. This can be done in the KDE menu editor, or easily via a shortcut on Windows. It's somewhat
+more obnoxious to do on macOS.
+
+If you'd prefer something a bit more granular, you can use the below approach that creates symlinks to your config.
+
+### Initial setup
 
 First off, you need something to physically do the sync. Options include:
 
@@ -30,22 +45,22 @@ macOS or Linux:
 
 <Tabs syncKey="shell">
   <TabItem label="Bash" icon="seti:shell">
-    <Code code={setupNix} lang="bash" title="setup-nix.sh" />
+    <Code code={setupNix} lang="bash" title="setup.sh" />
   </TabItem>
   <TabItem label="PowerShell" icon="seti:powershell">
-    <Code code={setupWin} lang="powershell" title="setup-nix.sh" />
+    <Code code={setupWin} lang="powershell" title="setup.ps1" />
   </TabItem>
 </Tabs>
 
-## Setting up additional/new machines
+### Setting up additional/new machines
 
 Once you've set up your source of truth, you can set up additional machines like so:
 
 <Tabs syncKey="shell">
   <TabItem label="Bash" icon="seti:shell">
-    Under construction -- check back in a day or two!
+    <Code code={newMachineNix} lang="bash" title="new-machine.sh" />
   </TabItem>
   <TabItem label="PowerShell" icon="seti:powershell">
-    Under construction -- check back in a day or two!
+    <Code code={newMachineWin} lang="powershell" title="new-machine.ps1" />
   </TabItem>
 </Tabs>

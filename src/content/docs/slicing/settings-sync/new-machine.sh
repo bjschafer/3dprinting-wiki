@@ -21,21 +21,19 @@ Linux)
     ;;
 esac
 
-# ensure SRC is empty; this is a fresh setup
-if find "${SRC}" -mindepth 1 -maxdepth 1 | read -r; then
-    echo "${SRC} contains files -- check the path or run the sync script" 2>&1
-fi
-
-mkdir -p "${SRC}"
-
-pushd "${DEST}/${DEST_SUBPATH}" >/dev/null || exit
+pushd "${SRC}" >/dev/null || exit
 for d in *; do
+    dest="${DEST}/${DEST_SUBPATH}/${d}"
+
+    if [[ -L "${dest}" ]]; then
+        echo "${d} already linked; skipping"
+        continue
+    fi
+
     echo "backing up ${d}"
-    cp -r "${d}" "${d.orig}"
-    mv "${d}" "${SRC}/${d}"
+    test -d "${dest}" && mv "${dest}" "${dest}.old"
 
     echo "linking ${d}"
-    ln -s "${PWD}/${d}" "${SRC}/${d}"
+    ln -s "${PWD}/${d}" "${dest}"
 done
-
-echo "Successfully copied and linked $SRC to $DEST"
+popd >/dev/null || exit

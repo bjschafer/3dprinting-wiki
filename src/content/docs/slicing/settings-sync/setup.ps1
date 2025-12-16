@@ -1,7 +1,7 @@
 # SET OR CONFIRM THESE VARIABLES v
 
 $SLICER = 'OrcaSlicer'
-$SRC = "PATH_TO_YOUR_SYNC" # e.g. "$HOME/Dropbox/Slicer Settings"
+$SRC = "PATH_TO_YOUR_SYNC" # e.g. "$env:HOME/Dropbox/Slicer Settings"
 $DEST = "$env:APPDATA\$SLICER"
 
 # SET OR CONFIRM THESE VARIABLES ^
@@ -23,12 +23,12 @@ Push-Location "$DEST\$DEST_SUBPATH"
 Foreach ($d in Get-ChildItem -Directory)
 {
     Write-Host "backing up $d"
-    Copy-Item -Path $d -Destination "$(d).orig" -Recurse
+    Copy-Item -Path $d -Destination "$d.orig" -Recurse
 
-    Move-Item $d "$SRC\$(d).Name"
+    Move-Item $d "$SRC\$($d.Name)"
 
     Write-Host "linking $d"
-    New-Item -Target "$SRC\$(d).Name" -Path $d -ItemType SymbolicLink
+    New-Item -Path $d -Target "$SRC\$($d.Name)" -ItemType SymbolicLink
 }
 Pop-Location
 
