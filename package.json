@@ -21,7 +21,7 @@
         "starlight-links-validator": "^0.19.2"
     },
     "devDependencies": {
-        "@astrojs/check": "^0.9.6",
+        "@astrojs/check": "^0.9.8",
         "prettier": "^3.8.1",
         "typescript": "^5.9.3"
     }
