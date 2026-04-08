@@ -14,15 +14,15 @@
         "pre-commit": "bun run format && bun run check"
     },
     "dependencies": {
-        "@astrojs/starlight": "^0.37.7",
-        "@catppuccin/starlight": "^1.1.1",
-        "astro": "^5.18.1",
+        "@astrojs/starlight": "^0.38.3",
+        "@catppuccin/starlight": "^2.0.1",
+        "astro": "^6.1.4",
         "sharp": "^0.34.5",
-        "starlight-links-validator": "^0.19.2"
+        "starlight-links-validator": "^0.22.0"
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.8",
         "prettier": "^3.8.1",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.2"
     }
 }
