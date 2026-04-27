@@ -4,16 +4,16 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "@astrojs/starlight": "latest",
-        "@catppuccin/starlight": "latest",
-        "astro": "latest",
-        "sharp": "latest",
-        "starlight-links-validator": "latest",
+        "@astrojs/starlight": "^0.38.3",
+        "@catppuccin/starlight": "^2.0.1",
+        "astro": "^6.1.4",
+        "sharp": "^0.34.5",
+        "starlight-links-validator": "^0.24.0",
       },
       "devDependencies": {
-        "@astrojs/check": "latest",
-        "prettier": "latest",
-        "typescript": "latest",
+        "@astrojs/check": "^0.9.8",
+        "prettier": "^3.8.1",
+        "typescript": "^6.0.2",
       },
     },
   },
@@ -854,7 +854,7 @@
 
     "space-separated-tokens": ["space-separated-tokens@2.0.2", "", {}, "sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q=="],
 
-    "starlight-links-validator": ["starlight-links-validator@0.22.0", "", { "dependencies": { "@types/picomatch": "^4.0.2", "github-slugger": "^2.0.0", "hast-util-from-html": "^2.0.3", "is-absolute-url": "^5.0.0", "mdast-util-mdx-jsx": "^3.2.0", "mdast-util-to-hast": "^13.2.1", "picomatch": "^4.0.3", "terminal-link": "^5.0.0", "unist-util-visit": "^5.1.0", "yaml": "^2.8.3" }, "peerDependencies": { "@astrojs/starlight": ">=0.38.0", "astro": ">=6.0.0" } }, "sha512-G+RiDfZN07UOmkKWe7MKG2eBa4kQV6w+ZvC2rpf2eYYDCyaGsXu0T+ja/u2CdQt02mt4Pfk5DUndp6MVtnjefg=="],
+    "starlight-links-validator": ["starlight-links-validator@0.24.0", "", { "dependencies": { "@types/picomatch": "^4.0.2", "github-slugger": "^2.0.0", "hast-util-from-html": "^2.0.3", "is-absolute-url": "^5.0.0", "mdast-util-mdx-jsx": "^3.2.0", "mdast-util-to-hast": "^13.2.1", "picomatch": "^4.0.3", "terminal-link": "^5.0.0", "unist-util-visit": "^5.1.0", "yaml": "^2.8.3" }, "peerDependencies": { "@astrojs/starlight": ">=0.38.0", "astro": ">=6.0.0" } }, "sha512-bsZf77oRJmY92KWOcu3vYK8Y12KJNvO3jQca1BgOBs+XskNfjPXrkgVtT7ls/FnLoomfsIV0wLdJfJs7kzGojA=="],
 
     "stream-replace-string": ["stream-replace-string@2.0.0", "", {}, "sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w=="],
 
