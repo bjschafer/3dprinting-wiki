@@ -27,23 +27,23 @@ export default defineConfig({
       sidebar: [
         {
           label: "Build",
-          autogenerate: { directory: "build" },
+          items: [{ autogenerate: { directory: "build" } }],
         },
         {
           label: "Tuning and Calibration",
-          autogenerate: { directory: "tuning" },
+          items: [{ autogenerate: { directory: "tuning" } }],
         },
         {
           label: "Troubleshooting",
-          autogenerate: { directory: "troubleshooting" },
+          items: [{ autogenerate: { directory: "troubleshooting" } }],
         },
         {
           label: "Slicing",
-          autogenerate: { directory: "slicing" },
+          items: [{ autogenerate: { directory: "slicing" } }],
         },
         {
           label: "CAD and Design",
-          autogenerate: { directory: "design" },
+          items: [{ autogenerate: { directory: "design" } }],
         },
         {
           slug: "useful-links",
