@@ -11,7 +11,7 @@ async function getStubIds(): Promise<Set<string>> {
   stubIds = new Set(
     docs
       .filter((doc) => (doc.data as { stub?: boolean }).stub === true)
-      .map((doc) => doc.id)
+      .map((doc) => doc.id),
   );
   return stubIds;
 }
@@ -21,7 +21,10 @@ interface SidebarLink {
   label: string;
   href: string;
   isCurrent: boolean;
-  badge?: { text: string; variant: "note" | "tip" | "caution" | "danger" | "success" | "default" };
+  badge?: {
+    text: string;
+    variant: "note" | "tip" | "caution" | "danger" | "success" | "default";
+  };
   attrs: Record<string, string | number | boolean | undefined>;
 }
 
@@ -30,7 +33,10 @@ interface SidebarGroup {
   label: string;
   entries: SidebarEntry[];
   collapsed: boolean;
-  badge?: { text: string; variant: "note" | "tip" | "caution" | "danger" | "success" | "default" };
+  badge?: {
+    text: string;
+    variant: "note" | "tip" | "caution" | "danger" | "success" | "default";
+  };
 }
 
 type SidebarEntry = SidebarLink | SidebarGroup;
