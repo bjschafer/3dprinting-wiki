@@ -9,3 +9,9 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      # TypeScript 7 (native compiler) doesn't yet expose the programmatic API
+      # that `astro check` relies on; support is tracked in
+      # https://github.com/withastro/roadmap/discussions/1321
+      - dependency-name: "typescript"
+        versions: [">=7.0.0"]
