@@ -14,7 +14,7 @@
         "pre-commit": "bun run format && bun run check"
     },
     "dependencies": {
-        "@astrojs/starlight": "^0.42.1",
+        "@astrojs/starlight": "^0.42.5",
         "@catppuccin/starlight": "^2.1.0",
         "astro": "^7.3.5",
         "sharp": "^0.35.5",
@@ -24,5 +24,8 @@
         "@astrojs/check": "^0.9.10",
         "prettier": "^3.9.9",
         "typescript": "^6.0.3"
+    },
+    "overrides": {
+        "@astrojs/starlight": "$@astrojs/starlight"
     }
 }
